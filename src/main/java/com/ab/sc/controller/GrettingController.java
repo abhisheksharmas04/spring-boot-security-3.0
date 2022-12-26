@@ -12,8 +12,7 @@ public class GrettingController {
 	
 	@GetMapping("/greetings")
 	public ResponseEntity<String> sayHello() throws Exception{
-		throw new Exception("Exception");
-		//return ResponseEntity.ok("Hello From Spring Security 3.0");
+		return ResponseEntity.ok("Hello From Spring Security 3.0");
 	}
 	
 	@GetMapping("/say-good-bye")
