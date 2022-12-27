@@ -18,7 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.web.servlet.HandlerExceptionResolver;
 
 import com.ab.sc.dao.UserDao;
 
@@ -31,7 +30,6 @@ public class SecurityConfig {
 	
 	private final JwtAuthFilter jwtAuthFilter;
 	private final UserDao userDao;
-	private final HandlerExceptionResolver handlerExceptionResolver;
 	
 	
 	/*Here we have prodivede new Security filter chain bean*/

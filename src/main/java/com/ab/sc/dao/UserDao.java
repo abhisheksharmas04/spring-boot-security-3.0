@@ -1,6 +1,7 @@
 package com.ab.sc.dao;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -19,8 +20,12 @@ public class UserDao {
 	
 	public UserDetails findUserByEmail(String email) {
 		Users user = userDao.findByUserName(email).orElseThrow(() -> new UsernameNotFoundException("No User found with email " + email));
+		System.out.println("UserDao.findUserByEmail() " + user.getUserName());
+		Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+		user.getRoles().forEach(role->{authorities.add(new SimpleGrantedAuthority(role.getRoleName()));});
+		user.getRoles().forEach(roles -> System.out.print(roles.getRoleName()));
 		return
-			new User(user.getUserName(), user.getUserPassword(), Collections.singleton(new SimpleGrantedAuthority(user.getRole())));
+			new User(user.getUserName(), user.getPassword(),authorities);
 	}
 
 }
